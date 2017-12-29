@@ -1,3 +1,5 @@
+/* Module to export material components */
+
 import { NgModule } from '@angular/core';
 
 import {

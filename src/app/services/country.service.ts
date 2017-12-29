@@ -7,6 +7,7 @@ export class CountryService {
 
   constructor(private http: HttpClient) { }
 
+  /* Get the countries */
   getAll() {
     return this.http.get(`${server.url}/all`);
   }

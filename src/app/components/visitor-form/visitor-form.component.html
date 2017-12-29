@@ -13,15 +13,6 @@
         </mat-form-field>
 
         <mat-form-field fxFlex  = "100%">
-          <input matInput [matDatepicker]="dp" [min]="minDate" [max]="maxDate" placeholder="Fecha de nacimiento (mm/dd/yyyy)" formControlName = "birth" [errorStateMatcher]="matcher">
-          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-          <mat-datepicker #dp disabled="false"></mat-datepicker>
-          <mat-error *ngIf="visitorInfo.get('birth').hasError('required')">
-            La fecha de nacimiento es <strong>requerida</strong>
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field fxFlex  = "100%">
           <mat-select placeholder="Pais" formControlName = "country" [errorStateMatcher]="matcher">
             <mat-option value = "" disabled>Seleccione un pais</mat-option>
             <mat-option *ngFor="let country of countries" [value]="country.name">
@@ -33,6 +24,16 @@
             El pais es <strong>requerido</strong>
           </mat-error>
         </mat-form-field>
+
+        <mat-form-field fxFlex  = "100%">
+          <input matInput [matDatepicker]="dp" [min]="minDate" [max]="maxDate" placeholder="Fecha de nacimiento (mm/dd/yyyy)" formControlName = "birth" [errorStateMatcher]="matcher">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp disabled="false"></mat-datepicker>
+          <mat-error *ngIf="visitorInfo.get('birth').hasError('required')">
+            La fecha de nacimiento es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+
         <div class = "is-centered" fxFlex  = "100%">
           <button type="submit" [disabled] = "!visitorInfo.valid" mat-raised-button color="accent" >Saludar</button>
         </div>

@@ -1,6 +1,8 @@
 import { ErrorStateMatcher } from "@angular/material";
 import { FormControl, FormGroupDirective, NgForm } from "@angular/forms";
 
+/* Class to handle error validations */
+
 export class FormErrorStateMatcher implements ErrorStateMatcher {
     
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

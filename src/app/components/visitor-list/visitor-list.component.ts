@@ -8,7 +8,9 @@ import { Visitor } from '../../models/Visitor';
 })
 export class VisitorListComponent implements OnInit {
 
+  /* Visitors to display */
   @Input() visitors: Array<Visitor>;
+  /* Output to communicate with the parent */
   @Output() onVisitorSelected = new EventEmitter<Visitor>();
 
   constructor() { }
@@ -16,6 +18,7 @@ export class VisitorListComponent implements OnInit {
   ngOnInit() {
   }
 
+  /* Tell the parent a visitor is selected and send it to him */
   setVisitor(v: Visitor) {
     this.onVisitorSelected.emit(v);
   }

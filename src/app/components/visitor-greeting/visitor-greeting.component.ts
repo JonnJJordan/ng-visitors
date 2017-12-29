@@ -9,8 +9,10 @@ import * as moment  from 'moment';
 })
 export class VisitorGreetingComponent implements OnInit, OnChanges {
 
+  /* Current visitor to greet*/
   @Input() visitor: Visitor
 
+  /* Date properties */
   day: number;
   monthName: string;
   year: number;
@@ -18,12 +20,13 @@ export class VisitorGreetingComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-
+    /* Set the locale to spanish */
     moment.locale('es');
 
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    /* When input value changes, check if visitor isn't null and format the properties */
     let visitor: Visitor = changes.visitor.currentValue;
 
     if (visitor !== null) {
