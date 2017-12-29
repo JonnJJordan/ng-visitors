@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-content>
+    <form (ngSubmit) = "addVisitor($event)" fxLayout = "row wrap" fxLayoutAlign = "center" fxLayoutGap="10px" [formGroup] = "visitorInfo">
+
+        <mat-form-field fxFlex = "100%" >
+          <input matInput placeholder="Nombre" formControlName = "name" [errorStateMatcher]="matcher">
+          <mat-error *ngIf="visitorInfo.get('name').hasError('required')">
+            El Nombre es <strong>requerido</strong>
+          </mat-error>
+          <mat-error *ngIf="visitorInfo.get('name').hasError('minlength')">
+            El Nombre debe tener minimo <strong>3 caracteres</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex  = "100%">
+          <input matInput [matDatepicker]="dp" [min]="minDate" [max]="maxDate" placeholder="Fecha de nacimiento (mm/dd/yyyy)" formControlName = "birth" [errorStateMatcher]="matcher">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp disabled="false"></mat-datepicker>
+          <mat-error *ngIf="visitorInfo.get('birth').hasError('required')">
+            La fecha de nacimiento es <strong>requerida</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxFlex  = "100%">
+          <mat-select placeholder="Pais" formControlName = "country" [errorStateMatcher]="matcher">
+            <mat-option value = "" disabled>Seleccione un pais</mat-option>
+            <mat-option *ngFor="let country of countries" [value]="country.name">
+              <img style="vertical-align:middle; border-radius: 50%" aria-hidden src="{{country.flag}}" height="25" width="25" />
+              <span>{{ country.name }}</span>
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="visitorInfo.get('country').hasError('required')">
+            El pais es <strong>requerido</strong>
+          </mat-error>
+        </mat-form-field>
+        <div class = "is-centered" fxFlex  = "100%">
+          <button type="submit" [disabled] = "!visitorInfo.valid" mat-raised-button color="accent" >Saludar</button>
+        </div>
+    </form>
+
+  </mat-card-content>
+</mat-card>

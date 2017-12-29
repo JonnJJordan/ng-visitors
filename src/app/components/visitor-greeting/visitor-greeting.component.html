@@ -1,0 +1,4 @@
+<span *ngIf = "visitor !== null">
+  Hola {{ visitor.name }} de {{ visitor.country }}, el dia {{ day }} <br />
+  de {{ monthName }} del año {{ year }} tendrás {{ visitor.birth.getFullYear() | age: year }} años.
+</span>

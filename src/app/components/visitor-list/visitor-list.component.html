@@ -1,0 +1,9 @@
+<mat-nav-list>
+  <h3 mat-subheader>Visitantes Anteriores</h3>
+  <a mat-list-item *ngFor = "let visitor of visitors" (click) = "setVisitor(visitor)">
+    <img matListAvatar [src] = "visitor.flag" alt="Flag">
+    <h4 mat-line> {{ visitor.name }} </h4>
+    <p mat-line> {{visitor.country}} </p>
+    <p mat-line> {{ visitor.birth | date }}</p>
+  </a>
+</mat-nav-list>
